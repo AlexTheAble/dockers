@@ -20,7 +20,7 @@ ENV ANDROID_BUILD_TOOLS_VERSION 24.0.0
 
 ENV ANDROID_APIS android-24
 
-ENV ANDROID_ABI sys-img-x86_64-android-24
+ENV ANDROID_ABI x86_64-android-24
 
 ENV ANDROID_EXTRA extra-android-m2repository
 
@@ -32,7 +32,7 @@ ENV AVD_NAME emu
 
 ENV AVD_TARGET android-24
 
-ENV AVD_ABI sys-img-x86_64-android-24
+ENV AVD_ABI sys-img-x86_64
 
 ENV AVD_SKIN WVGA800
 
@@ -73,7 +73,7 @@ RUN echo "no" | android create avd \
 	--device "Nexus 6" \
 	--name $AVD_NAME \
 	--target $AVD_TARGET \
-	--abi $AVD_ABI \
+	--abi x86_64-android-24 \
 	--skin $AVD_SKIN
 
 

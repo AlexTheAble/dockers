@@ -20,7 +20,7 @@ ENV ANDROID_BUILD_TOOLS_VERSION 24.0.0
 
 ENV ANDROID_APIS android-24
 
-ENV ANDROID_ABI sys-img-x86_64-android-24
+ENV ANDROID_ABI sys-img-armeabi-v7a-android-24
 
 ENV ANDROID_EXTRA extra-android-m2repository
 
@@ -32,7 +32,7 @@ ENV AVD_NAME emu
 
 ENV AVD_TARGET android-24
 
-ENV AVD_ABI sys-img-x86_64
+ENV AVD_ABI armeabi-v7a
 
 ENV AVD_SKIN WVGA800
 
