@@ -30,7 +30,7 @@ ENV AVD_DEVICE Nexus\ 6
 
 ENV AVD_NAME emu
 
-ENV AVD_TARGET android-21
+ENV AVD_TARGET android-24
 
 ENV AVD_ABI aremeabi-v7a
 
