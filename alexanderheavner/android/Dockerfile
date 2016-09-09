@@ -18,15 +18,25 @@ ENV ANDROID_SDK_URL https://dl.google.com/android/${ANDROID_SDK_FILE}
 
 ENV ANDROID_BUILD_TOOLS_VERSION 24.0.0
 
-ENV ANDROID_APIS android-19,android-20,android-21,android-22,android-23,android-24
+ENV ANDROID_APIS android-24
 
-ENV ANDROID_ABI sys-img-armeabi-v7a-android-21,sys-img-armeabi-v7a-android-21
+ENV ANDROID_ABI sys-img-armeabi-v7a-android-24
 
 ENV ANDROID_EXTRA extra-android-m2repository
 
 ENV ANDROID_HOME /opt/android-sdk-linux
 
+ENV AVD_DEVICE Nexus\ 6
 
+ENV AVD_NAME emu
+
+ENV AVD_TARGET android-24
+
+ENV AVD_ABI armeabi-v7a
+
+ENV AVD_SKIN WVGA800
+
+ENV EMULATOR emulator64-arm
 
 #Set PATH
 
@@ -56,8 +66,17 @@ WORKDIR "/opt"
 
 RUN curl -L ${ANDROID_SDK_URL} | tar xz -C .
 
-RUN echo y | android update sdk -a -u -t platform-tools,$ANDROID_APIS,build-tools-$ANDROID_BUILD_TOOLS_VERSION,$ANDROID_ABI,$ANDROID_EXTRA
+RUN echo y | android update sdk -a -u -t platform-tools && echo y | android update sdk -a -u -t $ANDROID_APIS && echo y | android update sdk -a -u -t build-tools-$ANDROID_BUILD_TOOLS_VERSION && echo y | android update sdk -a -u -t $ANDROID_ABI && echo y | android update sdk -a -u -t $ANDROID_EXTRA
 
+#Create AVD
+
+RUN echo "no" | android create avd \
+	--force \
+	--device "Nexus 6" \
+	--name $AVD_NAME \
+	--target $AVD_TARGET \
+	--abi $AVD_ABI \
+	--skin $AVD_SKIN
 
 
 #Clean up
