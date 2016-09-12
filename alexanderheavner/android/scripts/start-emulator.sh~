@@ -1,1 +1,0 @@
-emulator64-arm @$AVD_NAME -no-window -noaudio
