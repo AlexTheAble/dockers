@@ -1,1 +1,1 @@
-$EMULATOR @$AVD_NAME -no-window -noaudio
+$EMULATOR @$AVD_NAME -no-window -noaudio &
