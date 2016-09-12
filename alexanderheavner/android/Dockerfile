@@ -22,7 +22,7 @@ ENV ANDROID_APIS android-24
 
 ENV ANDROID_ABI sys-img-armeabi-v7a-android-24
 
-ENV ANDROID_EXTRA extra-android-m2repository
+ENV ANDROID_EXTRA extra-android-m2repository,extra-google-google_play_services,extra-google-m2repository
 
 ENV ANDROID_HOME /opt/android-sdk-linux
 
@@ -41,8 +41,6 @@ ENV EMULATOR emulator64-arm
 #Set PATH
 
 ENV PATH $PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$ANDROID_HOME/build-tools/$ANDROID_BUILD_TOOLS_VERSION
-
-
 
 #Install dependencies
 
@@ -78,7 +76,10 @@ RUN echo "no" | android create avd \
 	--abi $AVD_ABI \
 	--skin $AVD_SKIN
 
-
 #Clean up
 
 RUN rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && apt-get autoremove -y && apt-get clean
+
+#Set working directy in /opt/wrokspace. This is where we will import our project file.
+
+WORKDIR "/opt/workspace
