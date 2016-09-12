@@ -26,18 +26,6 @@ ENV ANDROID_EXTRA extra-android-m2repository,extra-google-google_play_services,e
 
 ENV ANDROID_HOME /opt/android-sdk-linux
 
-ENV AVD_DEVICE Nexus\ 6
-
-ENV AVD_NAME emu
-
-ENV AVD_TARGET android-24
-
-ENV AVD_ABI armeabi-v7a
-
-ENV AVD_SKIN WVGA800
-
-ENV EMULATOR emulator64-arm
-
 #Set PATH
 
 ENV PATH $PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$ANDROID_HOME/build-tools/$ANDROID_BUILD_TOOLS_VERSION
@@ -46,19 +34,9 @@ ENV PATH $PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$ANDROID_HOME/bu
 
 RUN dpkg --add-architecture i386 && apt-get update && echo "y" | apt-get install libc6:i386 libstdc++6:i386 && echo "y" | apt-get install zlib1g:i386 && apt-get clean
 
+#Move to /opt directory
 
-
-#Copy over scripts
-
-COPY scripts /opt/scripts
-
-
-
-#Set working directory
-
-WORKDIR "/opt"
-
-
+RUN cd /opt
 
 #Install Android SDK
 
@@ -66,15 +44,6 @@ RUN curl -L ${ANDROID_SDK_URL} | tar xz -C .
 
 RUN echo y | android update sdk -a -u -t platform-tools && echo y | android update sdk -a -u -t $ANDROID_APIS && echo y | android update sdk -a -u -t build-tools-$ANDROID_BUILD_TOOLS_VERSION && echo y | android update sdk -a -u -t $ANDROID_ABI && echo y | android update sdk -a -u -t $ANDROID_EXTRA
 
-#Create AVD
-
-RUN echo "no" | android create avd \
-	--force \
-	--device "Nexus 6" \
-	--name $AVD_NAME \
-	--target $AVD_TARGET \
-	--abi $AVD_ABI \
-	--skin $AVD_SKIN
 
 #Clean up
 
