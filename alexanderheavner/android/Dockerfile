@@ -1,13 +1,8 @@
 FROM ubuntu:14.04
 
-
-
 FROM openjdk:8
 
-
-
 MAINTAINER Alexander Heavner "alexander.heavner@ncr.com"
-
 
 
 # Build variables
@@ -32,11 +27,11 @@ ENV PATH $PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$ANDROID_HOME/bu
 
 #Install dependencies
 
-RUN dpkg --add-architecture i386 && apt-get update && echo "y" | apt-get install libc6:i386 libstdc++6:i386 && echo "y" | apt-get install zlib1g:i386 && apt-get clean
+RUN apt-get update && dpkg --add-architecture i386 && apt-get update && echo "y" | apt-get install libc6:i386 libstdc++6:i386 && echo "y" | apt-get install zlib1g:i386 && apt-get clean
 
-#Move to /opt directory
+#Move to /opt directory for instillation
 
-RUN cd /opt
+WORKDIR /opt
 
 #Install Android SDK
 
@@ -49,6 +44,6 @@ RUN echo y | android update sdk -a -u -t platform-tools && echo y | android upda
 
 RUN rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && apt-get autoremove -y && apt-get clean
 
-#Set working directy in /opt/wrokspace. This is where we will import our project file.
+#Set working directy in /opt/wrokspace. This is where we will import our project directory.
 
 WORKDIR "/opt/workspace
