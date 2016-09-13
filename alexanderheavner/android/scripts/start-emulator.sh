@@ -1,13 +1,9 @@
 #!/bin/bash
 $EMULATOR @$AVD_NAME -no-window -noaudio &
 
-adb wait-for-device
+WAIT_CMD="$ANDROID_SDK/platform-tools/adb wait-for-device shell getprop sys.boot_completed"
 
-A=$(adb shell getprop sys.boot_completed | tr -d '\r')
-
-while [ "$A" != "1" ]; do
-        sleep 2
-        A=$(adb shell getprop sys.boot_completed | tr -d '\r')
+until $WAIT_CMD | grep -m 1 stopped; do 
+  echo "Waiting..."
+  sleep 1
 done
-
-adb shell input keyevent 82
