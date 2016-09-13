@@ -1,13 +1,13 @@
 #!/bin/bash
 $EMULATOR @$AVD_NAME -no-window -noaudio &
 
-OUT=`adb shell getprop init.svc.bootanim`
-RES="stopped"
- 
-while [[ ${OUT:0:7}  != 'stopped' ]]; do
-		OUT=`adb shell getprop init.svc.bootanim`
-		echo 'Waiting for emulator to fully boot...'
-		sleep 1
+adb wait-for-device
+
+A=$(adb shell getprop sys.boot_completed | tr -d '\r')
+
+while [ "$A" != "1" ]; do
+        sleep 2
+        A=$(adb shell getprop sys.boot_completed | tr -d '\r')
 done
- 
-echo "Emulator booted!"
+
+adb shell input keyevent 82
