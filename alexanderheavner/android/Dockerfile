@@ -3,7 +3,7 @@ FROM alexanderheavner/android:latest
 
 # Build variables
 
-ENV AVD_DEVICE Nexus\ 6
+#ENV AVD_DEVICE Nexus\ 6
 
 ENV AVD_NAME emu
 
@@ -30,4 +30,4 @@ RUN echo "no" | android create avd \
 	--skin $AVD_SKIN
 
 #Run emulator
-RUN sh /opt/scripts/start-emulator.sh
+ENTRYPOINT sh /opt/scripts/start-emulator.sh && bash
