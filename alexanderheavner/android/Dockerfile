@@ -46,4 +46,4 @@ RUN rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && apt-get autoremove -y && ap
 
 #Set working directy in /opt/wrokspace. This is where we will import our project directory.
 
-WORKDIR "/opt/workspace
+WORKDIR /opt/workspace
