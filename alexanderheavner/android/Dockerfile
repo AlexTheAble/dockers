@@ -1,6 +1,6 @@
 FROM ubuntu:14.04
 
-FROM openjdk:8
+FROM openjdk:7
 
 MAINTAINER Alexander Heavner "alexander.heavner@ncr.com"
 
