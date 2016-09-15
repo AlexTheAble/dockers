@@ -1,11 +1,11 @@
 #!/bin/bash
 $EMULATOR @$AVD_NAME -no-window -noaudio &
 
-adb wait-for-device
+#adb wait-for-device
 
-A=$(adb shell getprop sys.boot_completed | tr -d '\r')
+#A=$(adb shell getprop sys.boot_completed | tr -d '\r')
 
-while [ "$A" != "1" ]; do
-        sleep 2
-        A=$(adb shell getprop sys.boot_completed | tr -d '\r')
-done
+#while [ "$A" != "1" ]; do
+#        sleep 2
+#        A=$(adb shell getprop sys.boot_completed | tr -d '\r')
+#done

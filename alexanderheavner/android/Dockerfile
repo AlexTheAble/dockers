@@ -30,4 +30,4 @@ RUN echo "no" | android create avd \
 	--skin $AVD_SKIN
 
 #Run emulator
-ENTRYPOINT sh /opt/scripts/start-emulator.sh && bash
+#ENTRYPOINT sh /opt/scripts/start-emulator.sh && bash
