@@ -1,6 +1,6 @@
 FROM ubuntu:14.04
 
-FROM openjdk:7
+FROM openjdk:8
 
 MAINTAINER Alexander Heavner "alexander.heavner@ncr.com"
 
@@ -11,7 +11,7 @@ ENV ANDROID_SDK_FILE android-sdk_r24.4.1-linux.tgz
 
 ENV ANDROID_SDK_URL https://dl.google.com/android/${ANDROID_SDK_FILE}
 
-ENV ANDROID_BUILD_TOOLS_VERSION 24.0.0
+ENV ANDROID_BUILD_TOOLS_VERSION 24.0.2
 
 ENV ANDROID_APIS android-24
 
